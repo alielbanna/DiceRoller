@@ -7,6 +7,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var diceImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -14,6 +17,9 @@ class MainActivity : AppCompatActivity() {
         rollButton.setOnClickListener {
             Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
             rollDice()
+
+            // Find the ImageView in the layout
+            diceImage = findViewById(R.id.imageView)
         }
     }
 
@@ -22,8 +28,7 @@ class MainActivity : AppCompatActivity() {
         val dice = Dice(6)
         val diceRoll = dice.roll()
 
-        // Find the ImageView in the layout
-        val diceImage: ImageView = findViewById(R.id.imageView)
+
 
         // Determine which drawable resource ID to use based on the dice roll
         val drawableResource = when (diceRoll) {
